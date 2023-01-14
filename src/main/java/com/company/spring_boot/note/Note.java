@@ -1,7 +1,11 @@
 package com.company.spring_boot.note;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Objects;
 
+
+@Component
 public class Note {
     private Long id;
     private String title;
