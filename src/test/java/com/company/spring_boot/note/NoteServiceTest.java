@@ -93,4 +93,19 @@ class NoteServiceTest {
 
         Assertions.assertEquals(allNotes, noteService.listAll());
     }
+    @Test
+    void ThatSearchHandledCorrectly() {
+        Map <Long,Note> allNotes=new HashMap<>();
+        Note note1FromList=new Note();
+        note1FromList.setTitle("TestNote1FromList");
+        note1FromList.setContent("TestNote1FromListContent");
+        noteService.add(note1FromList);
+        Long id1= note1FromList.getId();
+
+        allNotes.put(id1,note1FromList);
+        String pattern="Test";
+
+        Assertions.assertEquals(note1FromList, noteService.searchNote(pattern).get(0));
+    }
+
 }

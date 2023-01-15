@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,19 +36,23 @@ class NoteControllerTest {
 
     @Test
     public void whenDeleteNote_thenOk() throws Exception {
-        this.mvc.perform(get("/note/list"))
+        this.mvc.perform(get("/note/list")
+                        .param("id", "Test"))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void TestWhenUpdateNote_thenUpdated() throws Exception {
-        this.mvc.perform(get("/note/edit?id=1"))
+        this.mvc.perform(get("/note/edit")
+                        .param("id", "1"))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void TestWhenSearchNote_thenOK() throws Exception {
-        this.mvc.perform(get("/note/search?pattern=Test"))
+        this.mvc.perform(get("/note/search")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("pattern", "Test"))
                 .andExpect(status().isOk());
     }
 

@@ -54,15 +54,8 @@ public class NoteController {
 
     @GetMapping("/search")
     public ModelAndView searchNote(String pattern) {
-        ModelAndView result = new ModelAndView("list");
-        result
-                .addObject("listNotes", noteService.listAll()
-                        .values()
-                        .stream()
-                        .filter(note ->
-                                note.getContent().contains(pattern)
-                                        || note.getTitle().contains(pattern)
-                        ).toList());
+        ModelAndView result=new ModelAndView("list");
+        result.addObject("listNotes", noteService.searchNote(pattern));
         return result;
     }
 }

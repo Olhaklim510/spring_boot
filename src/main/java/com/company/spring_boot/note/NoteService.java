@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -28,7 +29,7 @@ public class NoteService {
         if (!notes.containsKey(note.getId())) {
             throw new NullPointerException("This note doesn't exist");
         }
-       notes.put(note.getId(),note);
+        notes.put(note.getId(), note);
     }
 
     public synchronized Note getById(Long id) {
@@ -40,6 +41,16 @@ public class NoteService {
 
     public synchronized Map<Long, Note> listAll() {
         return notes;
+    }
+
+    public synchronized List<Note> searchNote(String pattern) {
+        return listAll()
+                        .values()
+                        .stream()
+                        .filter(note ->
+                                note.getContent().contains(pattern)
+                                        || note.getTitle().contains(pattern))
+                .toList();
     }
 
     //@PostConstruct
