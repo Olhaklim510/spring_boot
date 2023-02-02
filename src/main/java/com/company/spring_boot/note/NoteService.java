@@ -52,45 +52,4 @@ public class NoteService {
                                         || note.getTitle().contains(pattern))
                 .toList();
     }
-
-    //@PostConstruct
-//    public void main() {
-//        Note note1 = new Note();
-//        note1.setTitle("Test1");
-//        note1.setContent("Test1 content");
-//        Note note2 = new Note();
-//        note2.setTitle("Test2");
-//        note2.setContent("Test2 content");
-//        Note note3 = new Note();
-//        note3.setTitle("Test3");
-//        note3.setContent("Test3 content");
-//        add(note1);
-//        add(note2);
-//        add(note3);
-//        System.out.println("AFTER ADD");
-//        System.out.println("notes = " + notes);
-//        System.out.println(notes);
-//
-//
-//        System.out.println("AFTER DELETE");
-//        new NoteService().deleteById(3L);
-//        System.out.println("notes = " + notes);
-//        System.out.println();
-//
-//        System.out.println("AFTER GET_BY_ID");
-//        System.out.println("new NoteService().getById(2) = " + new NoteService().getById(2L));
-//        System.out.println();
-//
-//        System.out.println("AFTER UPDATE");
-//        Note noteUpdate = new Note();
-//        noteUpdate.setId(2L);
-//        noteUpdate.setTitle("TestForUpdate");
-//        noteUpdate.setContent("TestForUpdate content");
-//        new NoteService().update(noteUpdate);
-//        System.out.println("notes = " + notes);
-//        System.out.println();
-//
-//        System.out.println("GET ALL_NOTES");
-//        System.out.println("notes = " + new NoteService().listAll());
-//    }
 }
